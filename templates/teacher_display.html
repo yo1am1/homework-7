@@ -1,6 +1,6 @@
-    List of teachers that exist in db
+        List of teachers that exist in db
 {% for teacher in teachers %}
-    <li>{{ teacher.name }} ,{{ teacher.subjects }}</li>
+    <li>{{ teacher.first_name }}, {{ teacher.subject }}</li>
 {% empty %}
     <li>There are no teachers in db.</li>
 {% endfor %}
