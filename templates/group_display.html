@@ -1,0 +1,6 @@
+    List of groups that exist in db
+{% for group in groups %}
+    <li>{{ group.name }}, {{ group.teacher }} in charge</li>
+{% empty %}
+    <li>There are no groups in db.</li>
+{% endfor %}

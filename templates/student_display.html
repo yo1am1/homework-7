@@ -1,0 +1,6 @@
+    List of students that exist in db
+{% for student in students %}
+    <li>{{ student.first_name }}, {{ student.year }} year, {{ student.group }} (group)</li>
+{% empty %}
+    <li>There are no students in db.</li>
+{% endfor %}

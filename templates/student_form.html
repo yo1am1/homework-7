@@ -1,0 +1,5 @@
+<form method="POST" action="{% url 'add_student' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>

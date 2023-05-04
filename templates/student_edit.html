@@ -1,0 +1,6 @@
+<form method="POST" action="{% url 'student_edit' form.instance.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+        <button type="submit" name="edit">Edit</button>
+		<button type="submit" name="delete">Delete</button>
+</form>
