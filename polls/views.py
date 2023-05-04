@@ -49,7 +49,7 @@ def teacher_edit(request, id: int):
 
 
 def teacher_list(request):
-    teachers = Teacher.objects.all()
+    teachers = Teacher.objects.values()
     return render(request, "teacher_display.html", {"teachers": teachers})
 
 
@@ -86,8 +86,8 @@ def student_edit(request, id: int):
 
 
 def student_list(request):
-    student = Student.objects.all()
-    return render(request, "student_display.html", {"student": student})
+    students = Student.objects.values()
+    return render(request, "student_display.html", {"students": students})
 
 
 def add_group(request):
