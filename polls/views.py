@@ -46,6 +46,8 @@ def teacher_edit(request, id: int):
             return HttpResponseRedirect(reverse("teachers_display"))
         elif "display" in request.POST:
             return HttpResponseRedirect(reverse("teachers_display"))
+        elif "add" in request.POST:
+            return HttpResponseRedirect(reverse("add_teacher"))
     else:
         form = TeacherForm(instance=teacher)
         context = {"form": form}
@@ -86,6 +88,8 @@ def student_edit(request, id: int):
             if form.is_valid():
                 form.save()
                 return render(request, "student_edit.html", {"form": form})
+        elif "add" in request.POST:
+            return HttpResponseRedirect(reverse("add_student"))
         else:
             student.delete()
             return HttpResponseRedirect(reverse("students_display"))
