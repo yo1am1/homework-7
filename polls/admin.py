@@ -1,3 +1,14 @@
 from django.contrib import admin
 
-# Register your models here.
+from polls.models import Group, Teacher
+
+
+@admin.register(Teacher)
+class TeacherAdmin(admin.ModelAdmin):
+    list_filter = ["subject", "first_name"]
+
+
+@admin.register(Group)
+class GroupAdmin(admin.ModelAdmin):
+    ordering = ["name"]
+    list_filter = ["name"]

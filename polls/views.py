@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from .forms import TeacherForm, StudentForm, GroupForm
-from .models import Teacher, Student
+from .models import Teacher, Student, Group
 
 
 def index(request):
@@ -17,6 +17,7 @@ def home(request):
 def add_teacher(request):
     if request.method == "POST":
         form = TeacherForm(request.POST)
+
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(
@@ -24,7 +25,9 @@ def add_teacher(request):
             )
     else:
         form = TeacherForm()
-    return render(request, "teacher_form.html", {"form": form})
+
+    context = {"form": form}
+    return render(request, "teacher_form.html", context)
 
 
 def teacher_edit(request, id: int):
@@ -45,17 +48,21 @@ def teacher_edit(request, id: int):
             return HttpResponseRedirect(reverse("teachers_display"))
     else:
         form = TeacherForm(instance=teacher)
-        return render(request, "teacher_edit.html", {"form": form})
+        context = {"form": form}
+        return render(request, "teacher_edit.html", context)
+    return HttpResponseRedirect(reverse("teacher_edit"))
 
 
 def teacher_list(request):
     teachers = Teacher.objects.values()
-    return render(request, "teacher_display.html", {"teachers": teachers})
+    context = {"teachers": teachers}
+    return render(request, "teacher_display.html", context)
 
 
 def add_student(request):
     if request.method == "POST":
         form = StudentForm(request.POST)
+
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(
@@ -63,7 +70,8 @@ def add_student(request):
             )
     else:
         form = StudentForm()
-    return render(request, "student_form.html", {"form": form})
+    context = {"form": form}
+    return render(request, "student_form.html", context)
 
 
 def student_edit(request, id: int):
@@ -74,6 +82,7 @@ def student_edit(request, id: int):
     if request.method == "POST":
         if "edit" in request.POST:
             form = StudentForm(request.POST, instance=student)
+
             if form.is_valid():
                 form.save()
                 return render(request, "student_edit.html", {"form": form})
@@ -87,15 +96,25 @@ def student_edit(request, id: int):
 
 def student_list(request):
     students = Student.objects.values()
-    return render(request, "student_display.html", {"students": students})
+    context = {"students": students}
+    return render(request, "student_display.html", context)
 
 
 def add_group(request):
     if request.method == "POST":
         form = GroupForm(request.POST)
+
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse("add_group"))
+
     else:
         form = GroupForm()
-    return render(request, "group_form.html", {"form": form})
+    context = {"form": form}
+    return render(request, "group_form.html", context)
+
+
+def group_list(request):
+    groups = Group.objects.values()
+    context = {"groups": groups}
+    return render(request, "group_display.html", context)

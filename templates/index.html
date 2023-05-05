@@ -73,15 +73,17 @@
 </head>
 <body>
 
-<h1>HOMEWORK #6 <p> <h3>Trepalin Yegor</h3> </p> </h1>
+<h1>HOMEWORK #6 <p>
+    <h3>Trepalin Yegor</h3> </p> </h1>
 
 <nav>
     <ul>
         <li><a href="{% url 'add_group' %}">Add group</a></li>
+        <li><a href="{% url 'group_display' %}">List of groups</a></li>
         <li><a href="{% url 'add_teacher' %}"><p>Add teacher</p></a></li>
         <li><a href="{% url 'teachers_display' %}"><p>List of teachers</p></a></li>
         <li><a href="{% url 'add_student' %}"><p>Add student</p></a></li>
-        <li><a href="{% url 'students_display' %}">List of existing students</a></li>
+        <li><a href="{% url 'students_display' %}">List of students</a></li>
     </ul>
 </nav>
 </body>

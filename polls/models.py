@@ -22,3 +22,6 @@ class Group(models.Model):
     name = models.CharField(max_length=50)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True)
     students = models.ManyToManyField(Student, related_name="student_groups")
+
+    def __str__(self):
+        return self.name
