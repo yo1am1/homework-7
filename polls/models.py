@@ -6,7 +6,7 @@ class Student(models.Model):
     year = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.first_name
+        return f"{self.first_name} ({self.year} year)"
 
 
 class Teacher(models.Model):
